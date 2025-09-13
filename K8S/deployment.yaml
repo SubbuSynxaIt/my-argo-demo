@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argo-demo
+  labels:
+    app: argo-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: argo-demo
+  template:
+    metadata:
+      labels:
+        app: argo-demo
+    spec:
+      containers:
+        - name: argo-demo
+          image: <AWS_ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/argo-demo:latest
+          ports:
+            - containerPort: 3000
